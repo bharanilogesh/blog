@@ -4,7 +4,7 @@ function Create() {
     return (
         <div className="form-container">
             <form>
-                <div className="addnewblog">
+                <div className="addNewBlog">
                     <h2>Add a New Blog</h2>
                 </div>
                 <div>
@@ -24,7 +24,7 @@ function Create() {
                         <input type="file" name="file" placeholder="File"></input>
                     </label>
                 </div>
-                <button className="newblog-btn">Submit</button>
+                <button className="newBlog-btn">Submit</button>
             </form>
         </div>
     );

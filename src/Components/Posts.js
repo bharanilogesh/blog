@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Post from './Post'
 import './styles.css'
+import Nav from "./Nav";
 
 function Posts() {
     const [blogs, setBlogs] = useState([])
@@ -20,6 +21,7 @@ function Posts() {
     }
     return (
     <div className='posts'>
+        <Nav/>
         <div className='search-container'>
             <input type="text" placeholder='search' 
             onInput={getInputData} className='search-input'></input>

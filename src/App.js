@@ -1,20 +1,24 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Nav from "./Components/Nav";
 import Posts from "./Components/Posts";
 import Detail from './Components/Detail';
 import Create from "./Components/Create";
+import Login from "./Components/Login";
+import SignUp from "./Components/signUp";
 
 function App() {
-    return(
+    return (
         <BrowserRouter>
-            <Nav/>
             <Routes>
-                <Route path="/" element={<Posts />}></Route>
-                <Route path="/read/:id" element={<Detail />}></Route>
-                <Route path="/newblog" element={<Create />}></Route>
+                <Route path="home" element={<Posts />} />
+                <Route path="/read/:id" element={<Detail />} />
+                <Route path="newblog" element={<Create />} />
+                <Route path="/" element={<Login />} />
+                <Route path="signup" element={<SignUp />} />
+
             </Routes>
         </BrowserRouter>
     )
 }
+
 export default App;
