@@ -52,21 +52,21 @@ const LogIn = () => {
       <button className='button' onClick={() => navigate('/signUp')}>
         Add account
       </button>
-      {/* <div>
+      <div>
         <button className='button' onClick={() => setIsOpen(!isOpen)}>
           Test credential
         </button>
         {isOpen && (
           <div className='credential'>
             <p>
-              <span>Email: </span>manojbharathi@gmail.com
+              <span>Email: </span>www.b55@gmail.com
             </p>
             <p>
               <span>Password: </span>123456
             </p>
           </div>
         )}
-      </div> */}
+      </div>
     </div>
   );
 };

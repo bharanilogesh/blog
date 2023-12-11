@@ -29,6 +29,16 @@
     border-radius: 7px;
     cursor: pointer;
 }
+
+.menu button{
+    background-color: var(--bg-red);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .menu .menu-btn:hover {
     background-color: rgb(199, 14, 91);
 }

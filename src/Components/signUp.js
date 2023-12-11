@@ -8,7 +8,7 @@ import { collection, setDoc, doc, getDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useNavigate } from 'react-router-dom';
 import { auth, db, storage } from '../firebase/firebase';
-import { useStoreConsumer } from './Store';
+import { useStoreConsumer } from '../context/storeProvider';
 
 import { v4 as uuidv4 } from 'uuid';
 import { FadeLoader } from 'react-spinners';
@@ -60,7 +60,7 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
-      // setLoading(true);
+      setLoading(true);
 
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -68,9 +68,13 @@ const SignUp = () => {
         password
       );
       const user = userCredential.user;
+      
+      const photoURL = await handleImageUpload(user.id);
       const loginDetails = {
         SignUpMethod: 'emailAndPassword',
-        
+        displayName: userName,
+        phoneNumber: number,
+        photoURL: photoURL,
       };
       const userDoc = doc(db, 'users', sameId);
 
@@ -79,6 +83,7 @@ const SignUp = () => {
         {
           id: sameId,
           email: user.email,
+          ...loginDetails,
         },
         { merge: true }
       );
@@ -122,6 +127,7 @@ const SignUp = () => {
   };
 
   return (
+    
     <div className='sign-up-container'>
       <h1 className='title'>Sign up here</h1>
       <div className={`sign-up ${loading ? 'blur' : ''}`}>
@@ -137,38 +143,7 @@ const SignUp = () => {
             placeholder='Enter your password'
             onChange={(e) => setPassword(e.target.value)}
           />
-
-          <div className='content'>
-            <input
-              type='text'
-              placeholder=' Enter Your name'
-              value={userName}
-              
-              onChange={(e) => setUserName(e.target.value)}
-            />
-          </div>
-          <div className='content'>
-            <input
-              type='number'
-              placeholder='Enter your number'
-              value={number}
-              
-              onChange={(e) => setNumber(e.target.value)}
-            />
-          </div>
-          <label> Add photo</label>
-          <input
-            className='img-input'
-            type='file'
-            accept='image/*'
-            placeholder='Add photo'
-            onChange={(e) => setUserImage(e.target.files[0])}
-          />
-          <button type='submit' className='button'>
-            SignUp
-          </button>
-
-   
+  
         </form>
       </div>
       <button className='button' onClick={handleGoogleSignIn}>

@@ -16,11 +16,12 @@ function Nav() {
     <div className='nav'>
         <h2 className='nav-brand'>Blogs</h2>
         <ul className='menu'>
-            <li><Link to="home" style={{textDecoration: "none"}} className='menu-btn'>Home</Link></li>
+            
             <li><Link to="/newblog" style={{textDecoration: "none"}} className='menu-btn'>New Blog</Link></li>
-            <li><Link to="login" style={{textDecoration: "none"}} className='menu-btn'>Login</Link></li>
-            <li><Link to="signUp" style={{textDecoration: "none"}} className='menu-btn'>signUP</Link></li>
-            <button onClick={logout}>logout</button>
+            <li><Link to="/user" style={{textDecoration: "none"}} className='menu-btn'>Profile
+            </Link></li>
+          
+            <button onClick={logout}>Logout</button>
         </ul>
     </div>
   )
